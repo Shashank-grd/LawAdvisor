@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:lawadvisor/Mob_nav.dart';
 
 import 'firebase_options.dart';
 
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
               color: Color.fromRGBO(31,44,52,1)
           ),
       ),
-      home: const MyHomePage(),
+      home: const MobileScreenLayout(),
     );
   }
 }
