@@ -48,9 +48,8 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home,color: _page==0? primaryColor : secondaryColor,),label: "",),
           BottomNavigationBarItem(icon: Icon(Icons.search,color: _page==1? primaryColor : secondaryColor,),label: "",),
-          BottomNavigationBarItem(icon: Icon(Icons.add_circle,color: _page==2? primaryColor : secondaryColor,),label: "",),
-          BottomNavigationBarItem(icon: Icon(Icons.favorite,color: _page==3? primaryColor : secondaryColor,),label: "",),
-          BottomNavigationBarItem(icon: Icon(Icons.person,color: _page==4? primaryColor : secondaryColor,),label: "",),
+          BottomNavigationBarItem(icon: Icon(Icons.chat_bubble_outline_rounded,color: _page==2? primaryColor : secondaryColor,),label: "",),
+          BottomNavigationBarItem(icon: Icon(Icons.person,color: _page==3? primaryColor : secondaryColor,),label: "",),
         ],
         onTap: navigationTap,
       ),
