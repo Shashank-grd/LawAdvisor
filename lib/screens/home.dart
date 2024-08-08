@@ -13,6 +13,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar:AppBar(
+        title: Image.asset('assets/appbarlawadv.png'
+          ,height: 180,
+          width: 200,
+        ),
+      ),
      body:
      StreamBuilder(
        stream: FirebaseFirestore.instance.collection('Lawyers').snapshots(),
