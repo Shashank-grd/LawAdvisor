@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:lawadvisor/screens/home.dart';
 
 
 List<Widget> homeScreenItems = [
-  Text("home"),
+  HomeScreen(),
   Text("search"),
   Text("noti"),
   Text("chat"),
-  // ProfileScreen(
-  //   uid: FirebaseAuth.instance.currentUser!.uid,
-  // ),
 ];

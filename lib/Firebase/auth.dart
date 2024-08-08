@@ -1,7 +1,6 @@
 import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:lawadvisor/Firebase/storage-method.dart';
 
 import '../Models/usermodel.dart'as model;
@@ -28,7 +27,7 @@ class AuthMethod{
   }) async {
     String res= "Some Error Occured";
     try{
-      if(email.isNotEmpty || password.isNotEmpty || username.isNotEmpty || mobile.isNotEmpty  ){
+      if(email.isNotEmpty && password.isNotEmpty && username.isNotEmpty && mobile.isNotEmpty  ){
         UserCredential cred=  await _auth.createUserWithEmailAndPassword(email: email, password: password);
         print(cred.user!.uid);
 
@@ -66,6 +65,7 @@ class AuthMethod{
     }
     return res;
   }
+  //sign out
   Future<void> signOut() async {
     await _auth.signOut();
   }
