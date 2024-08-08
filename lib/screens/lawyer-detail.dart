@@ -42,122 +42,128 @@ class _LawyerDetailScreenState extends State<LawyerDetailScreen> {
               Container(
                 padding: const EdgeInsets.all(4),
                 margin: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
-                child: CircleAvatar(
-                  radius: 70,
-                  backgroundImage:  NetworkImage(
-                    widget.snap["photoUrl"]
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 25),
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundImage:  NetworkImage(
+                      widget.snap["photoUrl"]
+                    ),
                   ),
                 ),
               ),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        widget.snap["username"],
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w900,
-                            fontSize: 26,
-                            color: Colors.grey
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          widget.snap["username"],
+                          style: const TextStyle(
+                              fontWeight: FontWeight.w900,
+                              fontSize: 20,
+                              color: Colors.grey
+                          ),
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            color: Colors.grey[500],
-                            size: 6,
-                          ),
-                          SizedBox(width: 10),
-                          Text(
-                            widget.snap['age'].toString(),
-                            style: TextStyle(
-                              fontSize: 20,
+                        SizedBox(height: 8),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.circle,
                               color: Colors.grey[500],
+                              size: 6,
                             ),
-                          ),
-                          SizedBox(width: 10),
-                          Icon(
-                            Icons.circle,
-                            color: Colors.grey[500],
-                            size: 6,
-                          ),
-                          SizedBox(width: 8),
-                          Text(
-                            widget.snap["gender"],
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.grey[500],
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Icon(
-                            Icons.circle,
-                            color: Colors.grey[500],
-                            size: 6,
-                          ),
-                          SizedBox(width: 10),
-                          Text(
-                            widget.snap["city"],
-                            style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.grey[500],
-                            ),
-                          ),
-                          SizedBox(width: 10),
-                          Icon(
-                            Icons.circle,
-                            color: Colors.grey[500],
-                            size: 6,
-                          ),
-                          SizedBox(width: 10),
-                          Text(
-                            widget.snap["court"],
-                            style: TextStyle(
-                              fontSize: 17,
-                              color: Colors.grey[500],
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 10),
-                      Row(
-                        children: [
-                          Chip(
-                            label: Text(
-                              widget.snap["speci"],
+                            SizedBox(width: 6),
+                            Text(
+                              widget.snap['age'].toString(),
                               style: TextStyle(
-                                color: Colors.white,
+                                fontSize: 15,
+                                color: Colors.grey[500],
                               ),
                             ),
-                            backgroundColor: Colors.grey.shade50.withOpacity(0.05),
-                          ),
-
-                          SizedBox(width: 10),
-                          Icon(
-                            Icons.circle,
-                            color: Colors.grey[500],
-                            size: 6,
-                          ),
-                          SizedBox(width: 10),
-                          Text(
-                            '${widget.snap["experience"].toString()} yrs +',
-                            style: TextStyle(
-                              fontSize: 20,
+                            SizedBox(width: 10),
+                            Icon(
+                              Icons.circle,
                               color: Colors.grey[500],
+                              size: 6,
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                            SizedBox(width: 6),
+                            Text(
+                              widget.snap["gender"],
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.grey[500],
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Icon(
+                              Icons.circle,
+                              color: Colors.grey[500],
+                              size: 6,
+                            ),
+                            SizedBox(width: 6),
+                            Text(
+                              widget.snap["city"],
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.grey[500],
+                              ),
+                            ),
+                            SizedBox(width: 10),
+                            Icon(
+                              Icons.circle,
+                              color: Colors.grey[500],
+                              size: 6,
+                            ),
+                            SizedBox(width: 6),
+                            Text(
+                              widget.snap["court"],
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.grey[500],
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 10),
+                        Row(
+                          children: [
+                            Chip(
+                              label: Text(
+                                widget.snap["speci"],
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                              backgroundColor: Colors.grey.shade50.withOpacity(0.05),
+                            ),
+
+                            SizedBox(width: 10),
+                            Icon(
+                              Icons.circle,
+                              color: Colors.grey[500],
+                              size: 6,
+                            ),
+                            SizedBox(width: 6),
+                            Text(
+                              '${widget.snap["experience"].toString()} yrs +',
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Colors.grey[500],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
