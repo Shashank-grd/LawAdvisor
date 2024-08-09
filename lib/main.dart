@@ -1,9 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:lawadvisor/Mob_nav.dart';
-import 'package:lawadvisor/screens/home.dart';
 import 'package:lawadvisor/screens/loginscreen.dart';
-
 import 'firebase_options.dart';
 
 void main() async{
@@ -27,24 +26,27 @@ class MyApp extends StatelessWidget {
               color: Color.fromRGBO(31,44,52,1)
           ),
       ),
-      home: const MobileScreenLayout(),
+      home:StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context,snapshot){
+          if(snapshot.connectionState== ConnectionState.active){
+            if(snapshot.hasData){
+              return const MobileScreenLayout();
+            }else if(snapshot.hasError){
+              return Center(
+                child: Text("${snapshot.error}"),
+              );
+            }
+          }
+          if(snapshot.connectionState == ConnectionState.waiting){
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+          return const LoginScreen();
+        },
+      ),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      body: Text("Shashank"),
-    );
-  }
-}
