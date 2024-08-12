@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:lawadvisor/Firebase/storage-method.dart';
 import 'package:lawadvisor/Models/Lawermodel.dart';
+import 'package:uuid/uuid.dart';
 
 class LawyerAuth {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -100,5 +101,25 @@ class LawyerAuth {
 
   Future<void> signOutLawyer() async {
     await _auth.signOut();
+  }
+
+
+  Future<void> Booking( String userId,String userName,String lawyerId,String lawyerName ) async{
+    try{
+        String BookingId=const Uuid().v1();
+        await _firestore.collection('Booking').doc(BookingId).set(
+            {
+              'BookingId': BookingId,
+              'userName': userName,
+              'userId': userId,
+              'lawyerId': lawyerId,
+              'lawyerName': lawyerName,
+              'datePublished': DateTime.now(),
+            }
+        );
+
+    }catch(e){
+      print(e.toString());
+    }
   }
 }
