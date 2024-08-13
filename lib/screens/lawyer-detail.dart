@@ -1,5 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:lawadvisor/Firebase/lawyer-auth.dart';
+import 'package:lawadvisor/Mob_nav.dart';
+import 'package:lawadvisor/utils/utils.dart';
+
 
 class LawyerDetailScreen extends StatefulWidget {
   final snap;
@@ -10,6 +16,28 @@ class LawyerDetailScreen extends StatefulWidget {
 }
 
 class _LawyerDetailScreenState extends State<LawyerDetailScreen> {
+  String username="";
+  String uid="";
+   bool _islooding = false;
+
+  @override
+  void initState() {
+    super.initState();
+    getUsername();
+  }
+
+
+   void getUsername() async {
+     DocumentSnapshot snap = await FirebaseFirestore.instance
+         .collection('users')
+         .doc(FirebaseAuth.instance.currentUser!.uid)
+         .get();
+     print(snap.data());
+     setState(() {
+       username=(snap.data() as Map<String,dynamic>)['username'];
+      uid=(snap.data() as Map<String,dynamic>)['uid'];
+     });
+   }
 
   @override
   Widget build(BuildContext context) {
@@ -252,11 +280,25 @@ class _LawyerDetailScreenState extends State<LawyerDetailScreen> {
             width: double.infinity, // Ensures the button takes up the full width
             height: 50, // Set a fixed height for the button
             child: ElevatedButton(
-              onPressed: () {
-                // Define what happens when the button is pressed
-                // For example, navigate to a booking page or trigger a booking process
-              },
-              child: Text(
+              onPressed: () async{
+                setState(() {
+                  _islooding=true;
+                });
+
+                await LawyerAuth().Booking(uid.toString(),username.toString(), widget.snap['uid'].toString(),widget.snap['username'] );
+
+                showSnackBar("Booking Confirmed", context);
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>MobileScreenLayout()));
+                setState(() {
+                  _islooding=false;
+                });
+                 },
+              child:_islooding? const Center(
+                child: CircularProgressIndicator(
+                  color: Colors.white,
+                ),
+              )
+                  : const Text(
                 'Book Now',
                 style: TextStyle(fontSize: 20),
               ),
