@@ -40,10 +40,15 @@ class _SignUpState extends State<SignUpScreen> {
   }
 
   void navigateToLoginIn() {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
+    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginScreen()));
   }
 
   void signUpUser() async {
+    if (_image == null) {
+      showSnackBar('Please fill all fields', context);
+      return;
+    }
+
     setState(() {
       _isloading = true;
     });
