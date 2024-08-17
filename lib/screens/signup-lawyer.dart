@@ -62,6 +62,30 @@ class _SignUpState extends State<SignUpScreenLawyer> {
   }
 
   void signUpLawyer() async {
+    if (_emailController.text.isEmpty ||
+        _passwordController.text.isEmpty ||
+        _userNameController.text.isEmpty ||
+        _mobileController.text.isEmpty ||
+        _ageController.text.isEmpty ||
+        _genderController.text.isEmpty ||
+        _addressController.text.isEmpty ||
+        _licenseController.text.isEmpty ||
+        _courtController.text.isEmpty ||
+        _experienceController.text.isEmpty ||
+        _aboutController.text.isEmpty ||
+        _cityController.text.isEmpty ||
+        _speciController.text.isEmpty ||
+        _image == null) {
+      showSnackBar('Please fill all fields and select an image', context);
+      return;
+    }
+    int? ageC = int.tryParse(_ageController.text);
+    int? experienceC = int.tryParse(_experienceController.text);
+
+    if (ageC == null || experienceC == null || ageC <= 0 || experienceC < 0) {
+      showSnackBar('Please enter valid numeric values for age and experience', context);
+      return;
+    }
     setState(() {
       _isloading = true;
     });
