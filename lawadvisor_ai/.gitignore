@@ -1,0 +1,5 @@
+lawadvisorAi/
+.env
+logs/
+exp/
+data/

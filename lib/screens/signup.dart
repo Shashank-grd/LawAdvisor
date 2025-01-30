@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:lawadvisor/Firebase/auth.dart';
-import 'package:lawadvisor/Mob_nav.dart';
 import 'package:lawadvisor/UI_helper/inputfield.dart';
 import 'package:lawadvisor/screens/loginscreen.dart';
 import 'package:lawadvisor/utils/utils.dart';
@@ -67,7 +66,7 @@ class _SignUpState extends State<SignUpScreen> {
       showSnackBar(res, context);
     } else {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => const MobileScreenLayout(),
+        builder: (context) => const LoginScreen(),
       ));
     }
   }

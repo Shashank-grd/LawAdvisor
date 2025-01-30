@@ -1,0 +1,18 @@
+pillow
+pydantic
+lxml
+matplotlib
+unstructured-pytesseract
+langchain_core
+langchain
+langchain_community
+fastapi
+python-dotenv
+langchain_chroma
+uvicorn
+pinecone-client
+langchain_pinecone
+pypdf
+langchain-google-genai
+
+-e .

@@ -1,0 +1,9 @@
+setup.py
+lawAdvisor.egg-info/PKG-INFO
+lawAdvisor.egg-info/SOURCES.txt
+lawAdvisor.egg-info/dependency_links.txt
+lawAdvisor.egg-info/top_level.txt
+src/__init__.py
+src/lawadvisor/__init__.py
+src/lawadvisor/logger.py
+src/lawadvisor/utils.py

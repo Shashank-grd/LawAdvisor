@@ -113,7 +113,7 @@ class _SignUpState extends State<SignUpScreenLawyer> {
       showSnackBar(res, context);
     } else {
       Navigator.of(context).pushReplacement(MaterialPageRoute(
-        builder: (context) => const MobileScreenLayout(),
+        builder: (context) => const LoginScreen(),
       ));
     }
   }
